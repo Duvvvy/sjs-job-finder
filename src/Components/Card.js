@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 const useStyles = makeStyles({
   root: {
     minWidth: 275,
+    maxWidth: 275
   },
   bullet: {
     display: 'inline-block',
@@ -22,32 +23,36 @@ const useStyles = makeStyles({
     marginBottom: 12,
   },
 });
-const [data, setData] = useState(props)
-export default function SimpleCard() {
+
+const SimpleCard = props => {
   const classes = useStyles();
   const bull = <span className={classes.bullet}>•</span>;
 
   return (
     <Card className={classes.root}>
       <CardContent>
-        <Typography className={classes.title} color="textSecondary" gutterBottom>
-          Word of the Day
+        <Typography variant="h5" component="h2" color="textSecondary" gutterBottom>
+          {props.name}
         </Typography>
-        <Typography variant="h5" component="h2">
-          be{bull}nev{bull}o{bull}lent
+        <Typography variant="h5" component="h2" className={classes.title} >
+        Applicants{bull}{props.applicants}
+        </Typography>
+        <Typography variant="h5" component="h2" className={classes.title} >
+        Places{bull}{props.places}
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
-          adjective
+          location:   {props.location}
         </Typography>
         <Typography variant="body2" component="p">
-          well meaning and kindly.
+            {props.description}
           <br />
-          {'"a benevolent smile"'}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Learn More</Button>
+        <Button size="small" target="_blank" href={props.id}>Learn More</Button>
       </CardActions>
     </Card>
   );
 }
+
+export default SimpleCard;
