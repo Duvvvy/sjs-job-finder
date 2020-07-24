@@ -7,10 +7,10 @@ export function Example() {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get(`https://www.sjs.co.nz/api/v1/elasticsearch/job/0/10/refreshed/ASC?`, {
+    axios.get(`https://www.sjs.co.nz/api/v1/elasticsearch/job/0/10/refreshed/DESC?`, {
         params: {
-          regions_id: '443',
-          category_id: '205+274',
+          regions_id: '443+2665',
+          category_id: '205+274+337',
           active: true
         }}).then(function(response){
             setData(response.data.documents)
